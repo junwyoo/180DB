@@ -8,6 +8,7 @@
 #define NUM_CLASSIFIERS 27
 #define NUM_MOTIONS 5
 #define NUM_SPEEDS 4
+#define BUFF_SIZE 1024
 
 /**********************************************************************
 THINGS TO CLARIFY/FIX:
@@ -16,9 +17,24 @@ THINGS TO CLARIFY/FIX:
 ***********************************************************************/
 
 
-void test_neural_network(float **class_v, int num_rows_classifiers){
+void test_neural_network(float **class_v, int num_rows_classifiers, char* name){
     int i, j, motion, speed;
     float max;
+    
+    //names of files
+    char* TRAINING = (char*)malloc(sizeof(char)*1024);
+    char* WALKING = (char*)malloc(sizeof(char)*1024);
+    char* RUNNING = (char*)malloc(sizeof(char)*1024);
+    char* JUMPING = (char*)malloc(sizeof(char)*1024);
+    char* STAIR_ASCENT = (char*)malloc(sizeof(char)*1024);
+    char* STAIR_DESCENT = (char*)malloc(sizeof(char)*1024);
+
+    sprintf(TRAINING,"TRAINING_%s.net", name);
+    sprintf(WALKING,"WALKING_%s.net", name);
+    sprintf(RUNNING,"RUNNING_%s.net", name);
+    sprintf(JUMPING,"JUMPING_%s.net", name);
+    sprintf(STAIR_ASCENT,"STAIR_ASCENT_%s.net", name);
+    sprintf(STAIR_DESCENT,"STAIR_DESCENT_%s.net", name);    
     
     // calc_out returns an array of outputs, with the number of outputs being equal to number 
     // of neurons in output layer
@@ -34,14 +50,14 @@ void test_neural_network(float **class_v, int num_rows_classifiers){
                 *jumping_ann;
 
     // Will help determine motion
-    motion_ann = fann_create_from_file("TRAINING.net");
+    motion_ann = fann_create_from_file(TRAINING);
 
     // These will help determine speed corresponding to a specific motion
-    walking_ann         = fann_create_from_file("WALKING.net");
-    running_ann         = fann_create_from_file("RUNNING.net");
-    stair_ascent_ann    = fann_create_from_file("STAIR_ASCENT.net");
-    stair_descent_ann   = fann_create_from_file("STAIR_DESCENT.net");
-    jumping_ann         = fann_create_from_file("JUMPING.net");
+    walking_ann         = fann_create_from_file(WALKING);
+    running_ann         = fann_create_from_file(RUNNING);
+    stair_ascent_ann    = fann_create_from_file(STAIR_ASCENT);
+    stair_descent_ann   = fann_create_from_file(STAIR_DESCENT);
+    jumping_ann         = fann_create_from_file(JUMPING);
 
     // Go through all n rows for class_v
     for (i=0; i < num_rows_classifiers; i++) {
@@ -98,7 +114,12 @@ void test_neural_network(float **class_v, int num_rows_classifiers){
         printf("Motion : %d --> Speed is %d\n", motion, speed);
     }
 
-    fann_destroy(ann);
-
+    
+    fann_destroy(motion_ann);
+    fann_destroy(walking_ann);
+    fann_destroy(running_ann);
+    fann_destroy(stair_ascent_ann);
+    fann_destroy(stair_descent_ann);
+    fann_destroy(jumping_ann);
 }
 

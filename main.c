@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <getopt.h>
+#include "neural_network.h"
 
 #define BUFF_SIZE 1024
 
