@@ -68,10 +68,17 @@ int main(int argc, char** argv)
 
   
   if(!test_flag)
-    printf("Training!\n");
+    {
+      //train data
+      //train_network(training_file, WALKING_name);
+      printf("Training!\n");
+    }
   else
-    printf("Testing!\n");
-
+    {
+      //test data
+      //test_neural_network(class_v,num_rows,name);
+      printf("Testing!\n");
+    }
   
   exit(0);
 }
