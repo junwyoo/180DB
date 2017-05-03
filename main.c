@@ -10,7 +10,11 @@ int main(int argc, char** argv)
   int c;
   int test_flag = 0; //set to 1 if "test" option
   char* name = (char*)malloc(sizeof(char) * BUFF_SIZE); 
-
+  if (argc == 1)
+  {
+    fprintf(stderr,"Error: Need Arguments.\n");
+    exit(1);
+  }
   /* input example
      ./main --train yoo   => train with name "yoo"
      ./main --test yoo    => test with name "yoo"
