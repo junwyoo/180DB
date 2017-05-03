@@ -7,4 +7,4 @@ extract: main.c
 	$(CC) $(CFLAGS)  main.c -o $@
 
 clean:
-	rm -f main.c *~
+	rm -f main *~
