@@ -2,7 +2,4 @@
 
 [Team 7]
 
-Amaael Antonini
-Daryn Arakawa
-Jiyong Kim
-Junwhan Yoo
+Amaael Antonini, Daryn Arakawa, Jiyong Kim, Junwhan Yoo
