@@ -1,7 +1,3 @@
-//
-// Created by Amaael Antonini on 4/12/17.
-//
-
 #include <stdio.h>
 #include <mraa/i2c.h>
 #include <signal.h>
@@ -18,6 +14,7 @@
 #define NORM 1000000.0f
 #define FILES 12
 #define IDLE 40
+
 const char * test_name = "/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/test";
 const char * path = "/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/";
 

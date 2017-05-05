@@ -1,7 +1,3 @@
-//
-// Created by Amaael Antonini on 4/12/17.
-//
-
 #include <stdio.h>
 #include <signal.h>
 #include <math.h>
@@ -10,7 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/time.h>
-
 
 #define BUFF_SIZE 1024
 #define FILE_TIME
@@ -31,17 +26,6 @@ void do_when_interrupted(int sig)
 
 void collect_training_data(){
     printf("collecting fake training data\n");
-}
-
-void train_network(const char * train_name)
-{
-    printf("fake training network\n");
-}
-
-
-void test_neural_network(float **class_v, int n)
-{
-    printf("fake newral network\n");
 }
 
 void test_data(const char *test_name)

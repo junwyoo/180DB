@@ -1,13 +1,10 @@
-//
-// Created by Amaael Antonini on 4/11/17.
-//
-
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/time.h>
 #include "classifiers.h"
+
 #define BUFFER 1024
 
 void training_file(float ***classifiers, const char * file_name, int *row_counts, const int *activities, int inputs, int s, int n, int a)

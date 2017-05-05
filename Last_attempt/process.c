@@ -13,6 +13,7 @@
 #define SLOTS 4
 #define FEATURES 27
 #define PRINT 100000
+
 const char * names[] = {"AA2", "DA2"};
 const char * file_names[] = {
         "walk_speed_1_50sec_32m",

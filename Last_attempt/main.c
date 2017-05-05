@@ -4,12 +4,14 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include "classifiers.h"
+#include "neural_network.h"
+
 #define INPUT 27
 #define CYCLES 12
 #define AUX 1
 #define ACTIVITIES 5
-
 #define BUFF_SIZE 1024
+
 const char * names_1[] = {
         "walk_speed_1_50sec_32m",
         "walk_speed_2_35sec_32m",
@@ -28,24 +30,28 @@ const char * train_speeds[] = {"walk", "run", "stairs_up", "stairs_down", "jump"
 const char * activities_file = "activities";
 const char *train_name = "testing.txt";
 const char * test_name = "test";
+
+/* ACTION: ADD FOLDER Data_sets TO GITHUB REPOSITORY */
 const char * path2 =  "";
 const char * test_name2 = "test";
 const char * data_path = "Data_sets/AA2_data/";
 const char * name = "AA2";
+
 const int activities[] =        {0, 0, 0, 0, 1, 1, 1, 2, 3, 4, 4, 4};
 const int speeds_outputs[] =    {0, 1, 2, 3, 0, 1, 2, 0, 0, 0, 1, 2};
 const int speeds_start[]  =     {0, 4, 7, 8, 9};
 const int speeds_end[] =        {4, 7, 8, 9, 12};
+
 int main(int argc, char **argv) {
 
+    /* Section of variables below is just for testing purposes; will need to be replaced later */
+    /////////////////////////////////////////////////////////////////////////////////////////////
     char * fake_test;
     fake_test = (char*)malloc(sizeof(char)*BUFF_SIZE);
     memset(fake_test, 0, sizeof(char)*BUFF_SIZE);
     sprintf(fake_test, "%s%s_%s.csv", data_path, names_1[0], name);
-
-    //char * test_file_name;
-//    test_file_name = (char*)malloc(sizeof(char)*BUFF_SIZE);
-//    memset(test_file_name, 0, BUFF_SIZE);
+    float **test_array;
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     float ***classifiers = NULL;
     // pointer to 3 d array with first D1 is activities,
@@ -60,40 +66,52 @@ int main(int argc, char **argv) {
     // second D2 is rows per activity
     int n;
     // n is integer with number of activities (12 for now)
-    int input;
-    input = INPUT;
+    
+    int input = INPUT;
     // when training, there will be sum o n rows if dim[i] for i from 0 to n-1 rows
     // dim[i] is the truth value or element 1 in row of -1 -1 -1 1(ith) -1
 
     // example follows
 
-    int i, j, k;
+    int i, j, k, l;
     int speeds;
-    float **test_array;
+    int loops, check;
+
     int num_of_test_classifers;
     int truth_value;
+    
     char *training_name;
     training_name = (char *) malloc(sizeof(char) * BUFF_SIZE);
+    const char *test_file_name;
+    test_file_name = (char*)malloc(sizeof(char)*BUFF_SIZE);
+
+    // Check if training file exists; if so, begin process of creating training files
     if(access("training.txt", F_OK) == -1 || (argv[1] == "y" || argv[1] == "Y")){
-    printf("if loop\n");
-//    if(access("/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/testing.txt", F_OK) == -1 ){
-        printf("training\n");
+    
+        printf("Collecting training data...\n");
+        /* ACTION: NEED TO DEFINE THE FUNCTION BELOW */
         collect_training_data();
-	printf("train parameters next\n");
+
+        printf("Training data collected. Training parameters...\n");
         train_parameters(&classifiers, &counts, &dimen, &n);
+        
         memset(training_name, 0, sizeof(char)*BUFF_SIZE);
         sprintf(training_name, "%s%s_%s", path2, activities_file, train_name);
-        printf("before training file\n");
+        
+        printf("Parameters trained successfully. Creating training files...\n");
         training_file(classifiers, training_name, dimen, activities, input, 0, n, ACTIVITIES);
-        for(i = 0; i < ACTIVITIES; i++)
+            for(i = 0; i < ACTIVITIES; i++)
         {
             memset(training_name, 0, sizeof(char)*BUFF_SIZE);
             sprintf(training_name, "%s%s_%s", path2, train_speeds[i], train_name);
             speeds = speeds_end[i] - speeds_start[i];
             training_file(classifiers, training_name, dimen, speeds_outputs, input, speeds_start[i], speeds_end[i], speeds);
         }
-        //train neural_network
+
+        /* ACTION: REPLACE THE FUNCTION BELOW WITH train_neural_network */
         train_network(train_name);
+        
+        // Free memory allocated to our buffers
         for(i = 0; i < n; i++){
             for(j = 0; j < dimen[i]; j++){
                 free(classifiers[i][j]);
@@ -101,23 +119,15 @@ int main(int argc, char **argv) {
             free(classifiers[i]);
             free(counts[i]);
         }
+
         free(classifiers);
         free(dimen);
     }
 
-//    test_data(test_name2);
-//     Check if file exists; -1 means file does not exists
-    int loops;
-    int check;
     check = 0;
     loops = 0;
-    int l = 0;
-    const char *test_file_name;
-    test_file_name = (char*)malloc(sizeof(char)*BUFF_SIZE);
-    //memset(test_file_name, 0, sizeof(char)*BUFF_SIZE);
-
-
-//    while (loops < CYCLES && run_flag){
+    
+    /* ACTION: MERGE BELOW CODE WITH JUN'S CONSUMER/PRODUCER CODE */
     while (loops < CYCLES ) {
         memset(fake_test, 0, sizeof(char)*BUFF_SIZE);
         sprintf(fake_test, "%s%s_%s.csv", data_path, names_1[l++], name);

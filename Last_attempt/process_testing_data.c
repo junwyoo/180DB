@@ -12,7 +12,6 @@
 #define FEATURES 27
 #define PRINT 100000
 
-
 int test_classifiers(float ***classifiers, const char * name, int *n){
 
     int i, j, k;

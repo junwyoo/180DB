@@ -1,7 +1,3 @@
-//
-// Created by Amaael Antonini on 4/12/17.
-//
-
 #include <stdio.h>
 #include <mraa/i2c.h>
 #include <signal.h>
@@ -16,8 +12,8 @@
 #define RUN 10
 #define NORM 1000000.0f
 #define MAX_FILES 1000
-const char * test_name = "/test";
 
+const char * test_name = "/test";
 
 void do_when_interrupted(int sig)
 {
