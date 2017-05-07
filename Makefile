@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -g -O2 -lmraa -lfann
+CFLAGS = -Wall -g -O2 #-lmraa -lfann
 
 default: main
 

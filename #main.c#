@@ -7,46 +7,10 @@
 
 
 #define BUFF_SIZE 1024
-int checkForNetFile(char *name)
+int checkCSVFile(char *name)
 {
-  char *filenname = (char*)malloc(sizeof(char)*BUFF_SIZE);
-  FILE *t_fp, *w_fp, *r_fp, *j_fp, *sa_fp, *sd_fp; //fps for .net files
-  
-  sprintf(filename,"%s/TRAINING_%s.net",name,name);
-  t_fp = fopen(filename, "r");
+//returns 1 if exists, -1 if not
 
-  if(t_fp == NULL) // if cannot open the file
-    {
-      printf("Error: .net file not found\n");
-      //prompt for training
-      printf("Do you wish to train data for: %s? [y/n]\n",name);
-      type = getchar();
-      if(type == '\n') type = getchar();
-      while(type != 'n' && type != 'y')
-	{
-	  printf("Wrong input. [y/n] \n");
-	  type = getchar();
-	  if(type == '\n') type = getchar();
-	}
-      printf("You answered: %c\n",type);
-      if(type == 'n')
-	{
-	  printf("Okay.. BYE!\n");
-	  exit(1);
-	}
-      else
-	{
-	  sprintf(command,"mkdir %s",name);
-	  system(command);
-	  printf("Directory named: %s is made\n",name);
-	  //DO the training
-	  printf("Training!\n");
-	}
-    }
-  else
-    {
-      printf("The files exist.\n");
-    }
 }
 int main(int argc, char** argv)
 {
@@ -70,6 +34,9 @@ int main(int argc, char** argv)
 
      ./main yoo => check for .net file for "yoo", if not prompt to user, 
      train, and test */
+//gather_data(WALKING_FAST,10);
+//gather_data(WALKING_SLOW,5);
+//gather_data(JUMPING_HIGH,20);
 
   /* Option Handling Starts */
   while(1) 
@@ -114,16 +81,29 @@ int main(int argc, char** argv)
     }
   /*Option handling ends*/
 
+/*
+char *target_file = 
+for(i=0;i<28;i++)
+{
+target
+sprintf(filename_i[i],"walking_slow_%s.csv",name);
+if(checkCSVFile(filename_i[i]) == -1)
+  gather_data(filename_i[i],index[i]);
+}
+
+ */
+
   if(argc == 2)
     {
       name = argv[1];
       printf("Checking for .net file under the name: %s...\n",name);
-      //checking for .net files
-      sprintf(filename,"%s/TRAINING_%s.net",name,name);
+      //checking for .csv files
+      sprintf(filename,"%s/WALKING_SLOW_%s.csv",name,name);
       t_fp = fopen(filename, "r");
 
       if(t_fp == NULL) // if cannot open the file
 	{
+//gather_data(filename,10);
 	  printf("Error: .net file not found\n");
 	  //prompt for training
 	  printf("Do you wish to train data for: %s? [y/n]\n",name);
