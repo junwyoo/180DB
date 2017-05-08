@@ -2,59 +2,58 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <getopt.h>
+#include <string.h>
 #include <sys/stat.h>
+
 #include "neural_network.h"
 
 
 #define BUFF_SIZE 1024
-int checkForNetFile(char *name)
-{
-  char *filenname = (char*)malloc(sizeof(char)*BUFF_SIZE);
-  FILE *t_fp, *w_fp, *r_fp, *j_fp, *sa_fp, *sd_fp; //fps for .net files
-  
-  sprintf(filename,"%s/TRAINING_%s.net",name,name);
-  t_fp = fopen(filename, "r");
+#define FILES 28
 
-  if(t_fp == NULL) // if cannot open the file
-    {
-      printf("Error: .net file not found\n");
-      //prompt for training
-      printf("Do you wish to train data for: %s? [y/n]\n",name);
-      type = getchar();
-      if(type == '\n') type = getchar();
-      while(type != 'n' && type != 'y')
-	{
-	  printf("Wrong input. [y/n] \n");
-	  type = getchar();
-	  if(type == '\n') type = getchar();
-	}
-      printf("You answered: %c\n",type);
-      if(type == 'n')
-	{
-	  printf("Okay.. BYE!\n");
-	  exit(1);
-	}
-      else
-	{
-	  sprintf(command,"mkdir %s",name);
-	  system(command);
-	  printf("Directory named: %s is made\n",name);
-	  //DO the training
-	  printf("Training!\n");
-	}
-    }
-  else
-    {
-      printf("The files exist.\n");
-    }
+const char * activity_names[] = { // changed from "names"
+        "walk_speed_1_50sec_32m",
+        "walk_speed_2_35sec_32m",
+        "walk_speed_3_25sec_32m",
+        "walk_speed_4_15sec_32m",
+        "slow_run",
+        "medium_slow_run",
+        "medium_fast_run",
+        "fast_run",
+        "slow_stairs_up",
+        "medium_slow_stairs_up",
+        "medium_fast_stairs_up",
+        "fast_stairs_up",
+        "slow_stairs_down",
+        "medium_slow_stairs_down",
+        "medium_fast_stairs_down",
+        "fast_stairs_down",
+        "low_jump",
+        "medium_low_jump",
+        "medium_high_jump",
+        "high_jump",
+        "turning_right_speed_1",
+        "turning_right_speed_2",
+        "turning_right_speed_3",
+        "turning_right_speed_4",
+        "turning_left_speed_1",
+        "turning_left_speed_2",
+        "turning_left_speed_3",
+        "turning_left_speed_4" //28 csv files
+};
+
+
+int checkCSVFile(char *name)
+{
+//check 
 }
 int main(int argc, char** argv)
 {
-  int c;
+  int c, i;
   char type; // input char
   char *filename = (char*)malloc(sizeof(char)*BUFF_SIZE);//for fopen
   char *command = (char*)malloc(sizeof(char)*BUFF_SIZE);//for shell cmd
-  char* name = (char*)malloc(sizeof(char) * BUFF_SIZE);//user name
+  char* username = (char*)malloc(sizeof(char) * BUFF_SIZE);//user name
   int test_flag = 0; //set to 1 if "test" option
   FILE *t_fp, *w_fp, *r_fp, *j_fp, *sa_fp, *sd_fp; //fps for .net files
   
@@ -63,14 +62,18 @@ int main(int argc, char** argv)
     fprintf(stderr,"Error: Need Arguments.\nex)./main yoo\n");
     exit(1);
   }
+
   
-  /* [INPUT EXAMPLE]
+  /* 
+     [INPUT EXAMPLE]
      ./main --train walking_3.csv   => train with name "yoo" & test
      ./main --test yoo    => test with name "yoo"
 
      ./main yoo => check for .net file for "yoo", if not prompt to user, 
-     train, and test */
+     train, and test 
+  */
 
+  
   /* Option Handling Starts */
   while(1) 
     {
@@ -109,24 +112,36 @@ int main(int argc, char** argv)
 	  fprintf(stderr, "Error: More than One Argument\n");
 	  exit(1);
 	}
-      name = optarg;
+      username = optarg;
 
     }
+  if(argc == 2)
+    username = argv[1];
   /*Option handling ends*/
 
-  if(argc == 2)
-    {
-      name = argv[1];
-      printf("Checking for .net file under the name: %s...\n",name);
-      //checking for .net files
-      sprintf(filename,"%s/TRAINING_%s.net",name,name);
-      t_fp = fopen(filename, "r");
+  
+  printf("Your name is: %s\n",username);
+  
+//  CSV file format:
+//  Train_Data_Set_<name>/<activity name>_<name>.csv 
 
-      if(t_fp == NULL) // if cannot open the file
-	{
-	  printf("Error: .net file not found\n");
+  char *target_string = (char*) malloc(sizeof(char)*BUFF_SIZE);
+  char **file_names = (char **) malloc(sizeof(char*)*FILES);
+
+  //make a directory
+  sprintf(target_string,"Train_Data_Set_%s",username);
+  mkdir(target_string, 0777);
+
+  //check for csv files
+  for(i = 0; i < FILES; i++) {
+    file_names[i] = (char *) malloc(BUFF_SIZE * sizeof(char));
+    memset(file_names[i], 0, BUFF_SIZE);
+    snprintf(file_names[i], BUFF_SIZE, "Train_Data_Set_%s/%s_%s.csv", username, activity_names[i], username);
+    if(access(file_names[i], F_OK) == -1)
+      {
+	printf("Error: %s file not found\n",file_names[i]);
 	  //prompt for training
-	  printf("Do you wish to train data for: %s? [y/n]\n",name);
+	  printf("Do you wish to train data for: %s? [y/n]\n",username);
 	  type = getchar();
 	  if(type == '\n') type = getchar();
 	  while(type != 'n' && type != 'y')
@@ -138,64 +153,18 @@ int main(int argc, char** argv)
 	  printf("You answered: %c\n",type);
 	  if(type == 'n')
 	    {
-	      printf("Okay.. BYE!\n");
-	      exit(1);
+	      printf("Okay.. continue checking..\n");
 	    }
 	  else
 	    {
-	      sprintf(command,"mkdir %s",name);
-	      system(command);
-	      printf("Directory named: %s is made\n",name);
-	      //DO the training
-	      printf("Training!\n");
+	      //[GATHER DATA]
+	      //gather_data(filename_i[i],index[i]);//
+	      fopen(file_names[i],"w");
+	      printf("Training for %s!\n",file_names[i]);
 	    }
-	}
-      else
-	{
-	  printf("The files exist.\n");
-	}
-
-      printf("Testing!\n");
-      //Now DO the testing
-
-      exit(0);
-    }
-  if(!test_flag)
-    {
-      fprintf(stdout,"Your name is: %s\n",name);
-      /* train data */
-
-      printf("Training!\n");
       
-      //train_network(training_file, WALKING_name);
-      //train_network(training_file, RUNNING_name);
-      //train_network(training_file, JUMPING_name);
-      //train_network(training_file, STAIR_ASCENT_name);
-      //train_network(training_file, STAIR_DESCENT_name);
-
-      printf("Testing!\n");
-      //test_neural_network(class_v,num_rows,name);
-      
-    }
-  else
-    {
-      fprintf(stdout,"Your name is: %s\n",name);
-      /* test data */
-
-      //check if .net file exists, if not prompt
-      printf("Error: .net file not found under the name: %s\n",name);
-      //test_neural_network(class_v,num_rows,name);
-      printf("Testing!\n");
-    }
-  /*
-  FILE* fp;
-  fp = fopen("yoo/WALKING_yoo.net", "r");
-  if(fp==NULL)
-    printf("open failed\n");
-  else
-    printf("open succeed\n");
-  */
+      }
+  }
+  
   exit(0);
-
-mkdir("test_dir",0777);
 }
