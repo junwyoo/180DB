@@ -159,7 +159,7 @@ int main(int argc, char** argv)
 	    {
 	      //[GATHER DATA]
 	      //gather_data(filename_i[i],index[i]);//
-	      fopen(file_names[i],"w");
+	      gather_data(file_names[i],10); //change 10 seconds to time_i[i]
 	      printf("Training for %s!\n",file_names[i]);
 	    }
       
