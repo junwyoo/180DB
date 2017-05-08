@@ -43,10 +43,6 @@ const char * activity_names[] = { // changed from "names"
 };
 
 
-int checkCSVFile(char *name)
-{
-//check 
-}
 int main(int argc, char** argv)
 {
   int c, i;
