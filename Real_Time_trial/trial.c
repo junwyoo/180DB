@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int main2()
+int main3()
 {
 
     int result = mkdir("/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/home/me/", 0777);

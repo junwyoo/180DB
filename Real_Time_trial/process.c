@@ -7,7 +7,7 @@
 #include "constants.h"
 
 
-void train_parameters(float ****classifiers, int *** counts, int **dimensions, int * n){
+void train_parameters(float ****classifiers, int **dimensions){
     int rv;
     int i, j, k;
     char **input_files;
@@ -465,19 +465,16 @@ void train_parameters(float ****classifiers, int *** counts, int **dimensions, i
 
 
     float *** out;
-    int **d1, *d2;
+    int *d2;
 
     int l;
     out = (float ***) malloc(FILES * sizeof(float **));
-    d1 = (int **) malloc(FILES * sizeof(int*));
     d2 = (int *) malloc(FILES * sizeof(int));
     for(i = 0; i < FILES; i++) {
         d2[i] = num_strides[i]-1;
-        d1[i] = (int *) malloc((num_strides[i]-1) * sizeof(int));
         out[i] = (float **) malloc(sizeof(float*) * (num_strides[i]-1));
 //        printf("%s\n", names[i]);
         for (j = 0; j < num_strides[i]-1; j++) {
-            d1[i][j] = FEATURES;
             out[i][j] = (float *) malloc(sizeof(float) * FEATURES);
             l = 0;
             out[i][j][l++] = stride_all[i][j][2];
@@ -527,9 +524,7 @@ void train_parameters(float ****classifiers, int *** counts, int **dimensions, i
         }
     }
     *classifiers = out;
-    *counts = d1;
     *dimensions = d2;
-    *n = FILES;
 
 
     // Free memory

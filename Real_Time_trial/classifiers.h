@@ -33,7 +33,7 @@ void training_file(float ***classifiers, const char * file_name, int *row_counts
 int temp_strides(float **data, int *out, float *sigma_y, float *sigma_z, float max_accel,
                  float max_gyro, float max_time, float min_time, int n);
 
-void train_parameters(float ****classifiers, int *** counts, int **dimensions, int * n);
+void train_parameters(float ****classifiers, int **dimensions);
 
 int select_strides(float * times, int * strides, int * out, float min_time, int n);
 
@@ -58,6 +58,8 @@ void peaks(float * data, int ** strides, float ** max_peak, float **max_trough, 
 void mean_slot(float * data, int ** strides, float * level, float ** mean_low, float ** mean_high, float slots, int n);
 
 int outlier(float * data, int * strides, int * out, float min_diff, int n);
+
+void consumer(char * name);
 
 
 #endif //FILE_EXAMPLE_CLASSIFIERS_H

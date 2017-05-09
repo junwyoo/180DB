@@ -7,7 +7,6 @@
 #include "constants.h"
 #include "classifiers.h"
 
-void gather_data(char * file_name);
 
 int temp_strides(float **data, int *out, float *sigma_y, float *sigma_z, float max_accel,
                  float max_gyro, float max_time, float min_time, int n)
