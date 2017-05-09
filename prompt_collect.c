@@ -7,7 +7,6 @@
 
 #include "neural_network.h"
 
-
 #define BUFF_SIZE 1024
 #define FILES 28
 
