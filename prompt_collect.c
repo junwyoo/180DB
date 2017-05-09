@@ -41,7 +41,7 @@ const char * activity_names[] = { // changed from "names"
         "turning_left_speed_4" //28 csv files
 };
 
-const int time_i[FILES] = {
+const int hold_time[FILES] = {
   10,//"walk_speed_1_50sec_32m",
   10,//"walk_speed_2_35sec_32m",
   10,//"walk_speed_3_25sec_32m",
@@ -68,6 +68,41 @@ const int time_i[FILES] = {
   10,//"turning_right_speed_4",
   10,//"turning_left_speed_1",
   10,//"turning_left_speed_2",
+  10,//"turning_left_speed_3",
+  10//"turning_left_speed_4"
+};
+const int record_time[FILES] = {
+  15,//"walk_speed_1_50sec_32m",
+  15,//"walk_speed_2_35sec_32m",
+  10,//"walk_speed_3_25sec_32m",
+  10,//"walk_speed_4_15sec_32m",
+
+  15,//"slow_run",
+  15,//"medium_slow_run",
+  10,//"medium_fast_run",
+  10,//"fast_run",
+  
+  15,//"slow_stairs_up",
+  15,//"medium_slow_stairs_up",
+  10,//"medium_fast_stairs_up",
+  10,//"fast_stairs_up",
+  15,//"slow_stairs_down",
+  15,//"medium_slow_stairs_down",
+  10,//"medium_fast_stairs_down",
+  10,//"fast_stairs_down",
+
+  15,//"low_jump",
+  15,//"medium_low_jump",
+  15,//"medium_high_jump",
+  15,//"high_jump",
+
+  15,//"turning_right_speed_1",
+  15,//"turning_right_speed_2",
+  10,//"turning_right_speed_3",
+  10,//"turning_right_speed_4",
+
+  15,//"turning_left_speed_1",
+  15,//"turning_left_speed_2",
   10,//"turning_left_speed_3",
   10//"turning_left_speed_4"
 };
@@ -126,7 +161,7 @@ int checkCSV(char *username)
 	      }
 	    else
 	      {
-		gather_data(file_names[i],time_i[i]); //time_i[i] default 10 seconds
+		gather_data(file_names[i], hold_time[i], record_time[i]);
 		printf("Training for %s!\n",file_names[i]);
 	      }
 	  } //end of checking/collecting
