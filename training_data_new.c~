@@ -14,11 +14,10 @@
 #include <sys/stat.h>
 
 //following is for mraa
-
+#include "LSM9DS0.h"
 #include <mraa/pwm.h>
 #include <mraa/aio.h>
 #include <mraa/i2c.h>
-#include "LSM9DS0.h"
 
 void gather_data(char *file_name, int hold_time, int record_time)
 {

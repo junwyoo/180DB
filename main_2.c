@@ -43,6 +43,10 @@ const char * activity_names[] = { // changed from "names"
 };
 
 
+int checkCSVFile(char *name)
+{
+//check 
+}
 int main(int argc, char** argv)
 {
   int c, i;
@@ -155,7 +159,7 @@ int main(int argc, char** argv)
 	    {
 	      //[GATHER DATA]
 	      //gather_data(filename_i[i],index[i]);//
-	      gather_data(file_names[i],10); //change 10 seconds to time_i[i]
+	      fopen(file_names[i],"w");
 	      printf("Training for %s!\n",file_names[i]);
 	    }
       
