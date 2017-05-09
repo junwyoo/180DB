@@ -42,7 +42,134 @@ const char * activity_names[] = { // changed from "names"
         "turning_left_speed_4" //28 csv files
 };
 
+const int time_i[FILES] = {
+  10,//"walk_speed_1_50sec_32m",
+  10,//"walk_speed_2_35sec_32m",
+  10,//"walk_speed_3_25sec_32m",
+  10,//"walk_speed_4_15sec_32m",
+  10,//"slow_run",
+  10,//"medium_slow_run",
+  10,//"medium_fast_run",
+  10,//"fast_run",
+  10,//"slow_stairs_up",
+  10,//"medium_slow_stairs_up",
+  10,//"medium_fast_stairs_up",
+  10,//"fast_stairs_up",
+  10,//"slow_stairs_down",
+  10,//"medium_slow_stairs_down",
+  10,//"medium_fast_stairs_down",
+  10,//"fast_stairs_down",
+  10,//"low_jump",
+  10,//"medium_low_jump",
+  10,//"medium_high_jump",
+  10,//"high_jump",
+  10,//"turning_right_speed_1",
+  10,//"turning_right_speed_2",
+  10,//"turning_right_speed_3",
+  10,//"turning_right_speed_4",
+  10,//"turning_left_speed_1",
+  10,//"turning_left_speed_2",
+  10,//"turning_left_speed_3",
+  10//"turning_left_speed_4"
+};
 
+int checkCSV(char *username)
+{
+  int redo_prompt = 0;
+  int i;
+  int n_missing = 0;
+  char type; // input char
+   
+  char *target_string = (char*) malloc(sizeof(char)*BUFF_SIZE);
+  char **file_names = (char **) malloc(sizeof(char*)*FILES);
+  char **missing_file_names = (char **) malloc(sizeof(char*)*FILES);
+
+  printf("Your name is: %s\n",username);
+  
+  //  CSV file format:
+  //  Train_Data_Set_<name>/<activity name>_<name>.csv 
+
+  
+  //make a directory
+  sprintf(target_string,"Train_Data_Set_%s",username);
+  mkdir(target_string, 0777);
+
+  while(redo_prompt)
+    {
+      redo_prompt = 0;
+      
+      //check for csv files
+      for(i = 0; i < FILES; i++) {
+	file_names[i] = (char *) malloc(BUFF_SIZE * sizeof(char));
+	memset(file_names[i], 0, BUFF_SIZE);
+	snprintf(file_names[i], BUFF_SIZE, "Train_Data_Set_%s/%s_%s.csv", username, activity_names[i], username);
+	if(access(file_names[i], F_OK) == -1)
+	  {
+	    printf("Error: %s file not found\n",file_names[i]);    
+	    
+	    //prompt for training
+	    printf("Do you wish to train data for: %s? [y/n]\n",username);
+	    type = getchar();
+	    if(type == '\n') type = getchar();
+	    while(type != 'n' && type != 'y')
+	      {
+		printf("Wrong input. [y/n] \n");
+		type = getchar();
+		if(type == '\n') type = getchar();
+	      }
+	    printf("You answered: %c\n",type);
+	    if(type == 'n')
+	      {
+		//saving the missing ones
+		missing_file_names[n_missing] = file_names[i];
+		n_missing ++;
+		printf("Okay.. continue checking..\n");
+	      }
+	    else
+	      {
+		gather_data(file_names[i],time_i[i]); //time_i[i] default 10 seconds
+		printf("Training for %s!\n",file_names[i]);
+	      }
+	  } //end of checking/collecting
+      } //end of for loop
+
+      if(n_missing != 0)
+	{
+	  printf("You have %d missing CSV files.\nDo you want to collect those? [y/n]\n");
+	  
+	  type = getchar();
+	  if(type == '\n') type = getchar();
+	  while(type != 'n' && type != 'y')
+	    {
+	      printf("Wrong input. [y/n] \n");
+	      type = getchar();
+	      if(type == '\n') type = getchar();
+	    }
+	  printf("You answered: %c\n",type);
+	  if(type == 'n')
+	    {
+	      printf("Error: cannot train with incomplete CSV files.\n");
+	      return -1;
+	    }
+	  else
+	    {
+	      printf("Running through again...\n");
+	      redo_prompt = 1;
+	    }
+	}
+      else // no missing file
+	return 1;
+    } //end of while loop
+
+  printf("Critical Error: Should not output this message!\n");
+  return -127;
+}
+
+
+
+// [main function commented out below] //
+
+/*
 int main(int argc, char** argv)
 {
   int c, i;
@@ -71,7 +198,7 @@ int main(int argc, char** argv)
 
   
   /* Option Handling Starts */
-  while(1) 
+/*  while(1) 
     {
       static struct option long_options[]=
 	{
@@ -115,7 +242,7 @@ int main(int argc, char** argv)
     username = argv[1];
   /*Option handling ends*/
 
-  
+/*
   printf("Your name is: %s\n",username);
   
 //  CSV file format:
@@ -164,3 +291,4 @@ int main(int argc, char** argv)
   
   exit(0);
 }
+*/
