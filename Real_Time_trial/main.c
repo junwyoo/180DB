@@ -5,6 +5,7 @@
 #include <sys/time.h>
 #include "classifiers.h"
 #include "constants.h"
+#include "prompt_collect.h"
 
 
 int main(int argc, char **argv) {
@@ -21,6 +22,7 @@ int main(int argc, char **argv) {
 
     // example follows
     int i, j, k;
+    int ret; // for checking return value
     int speeds;
 //    float **test_array;
     int num_of_test_classifers;
@@ -62,7 +64,15 @@ int main(int argc, char **argv) {
     }
     if (dot_net_files == -1) {
         printf("Training is required, proceeding to trainging\n");
-        // function call
+        if(checkCSV(name)==1)
+	  {
+	    //all csv files are present
+	  }
+	else
+	  {
+	    //one or more CSV files are missing
+	  }
+	
     }
 
     if (dot_net_files == -1) {
