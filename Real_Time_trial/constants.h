@@ -67,6 +67,7 @@ extern const char * paths[];
 extern const char * paths_out[];
 extern const char * stride_path;
 extern const char * train_file;
+extern const char * test_dir;
 extern const int train_times[];
 
 #endif //REAL_TIME_TRIAL_CONSTANTS_H

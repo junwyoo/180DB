@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Real_Time_trial.dir/training_file.c.o"
   "CMakeFiles/Real_Time_trial.dir/constants.c.o"
   "CMakeFiles/Real_Time_trial.dir/training_data_new.c.o"
+  "CMakeFiles/Real_Time_trial.dir/consumer.c.o"
   "Real_Time_trial.pdb"
   "Real_Time_trial"
 )

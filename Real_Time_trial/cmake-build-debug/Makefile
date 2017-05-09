@@ -204,6 +204,33 @@ constants.c.s:
 	$(MAKE) -f CMakeFiles/Real_Time_trial.dir/build.make CMakeFiles/Real_Time_trial.dir/constants.c.s
 .PHONY : constants.c.s
 
+consumer.o: consumer.c.o
+
+.PHONY : consumer.o
+
+# target to build an object file
+consumer.c.o:
+	$(MAKE) -f CMakeFiles/Real_Time_trial.dir/build.make CMakeFiles/Real_Time_trial.dir/consumer.c.o
+.PHONY : consumer.c.o
+
+consumer.i: consumer.c.i
+
+.PHONY : consumer.i
+
+# target to preprocess a source file
+consumer.c.i:
+	$(MAKE) -f CMakeFiles/Real_Time_trial.dir/build.make CMakeFiles/Real_Time_trial.dir/consumer.c.i
+.PHONY : consumer.c.i
+
+consumer.s: consumer.c.s
+
+.PHONY : consumer.s
+
+# target to generate assembly for a file
+consumer.c.s:
+	$(MAKE) -f CMakeFiles/Real_Time_trial.dir/build.make CMakeFiles/Real_Time_trial.dir/consumer.c.s
+.PHONY : consumer.c.s
+
 do_not_use_file.o: do_not_use_file.c.o
 
 .PHONY : do_not_use_file.o
@@ -411,6 +438,9 @@ help:
 	@echo "... constants.o"
 	@echo "... constants.i"
 	@echo "... constants.s"
+	@echo "... consumer.o"
+	@echo "... consumer.i"
+	@echo "... consumer.s"
 	@echo "... do_not_use_file.o"
 	@echo "... do_not_use_file.i"
 	@echo "... do_not_use_file.s"

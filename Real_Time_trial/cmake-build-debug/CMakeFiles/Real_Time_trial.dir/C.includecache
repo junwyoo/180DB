@@ -25,18 +25,6 @@ classifiers.h
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/classifiers.h
 
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/classifiers.h
-unistd.h
--
-stdio.h
--
-string.h
--
-stdlib.h
--
-sys/time.h
--
-math.h
--
 
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/collection.c
 unistd.h
@@ -56,6 +44,22 @@ constants.h
 constants.h
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h
 
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/consumer.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/classifiers.h
+constants.h
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h
 
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/do_not_use_file.c
@@ -119,6 +123,28 @@ classifiers.h
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/classifiers.h
 constants.h
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/training_data_new.c
+stdio.h
+-
+signal.h
+-
+math.h
+-
+unistd.h
+-
+string.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/classifiers.h
+stdlib.h
+-
+sys/time.h
+-
+sys/stat.h
+-
 
 /Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/training_file.c
 unistd.h

@@ -97,6 +97,9 @@
 		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/constants.h">
 			<Option target="Real_Time_trial"/>
 		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/consumer.c">
+			<Option target="Real_Time_trial"/>
+		</Unit>
 		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_trial/do_not_use_file.c">
 			<Option target="Real_Time_trial"/>
 		</Unit>

@@ -11,6 +11,10 @@ CMakeFiles/Real_Time_trial.dir/collection.c.o: ../constants.h
 CMakeFiles/Real_Time_trial.dir/constants.c.o: ../constants.c
 CMakeFiles/Real_Time_trial.dir/constants.c.o: ../constants.h
 
+CMakeFiles/Real_Time_trial.dir/consumer.c.o: ../classifiers.h
+CMakeFiles/Real_Time_trial.dir/consumer.c.o: ../constants.h
+CMakeFiles/Real_Time_trial.dir/consumer.c.o: ../consumer.c
+
 CMakeFiles/Real_Time_trial.dir/do_not_use_file.c.o: ../do_not_use_file.c
 
 CMakeFiles/Real_Time_trial.dir/main.c.o: ../classifiers.h
@@ -24,6 +28,10 @@ CMakeFiles/Real_Time_trial.dir/process.c.o: ../process.c
 CMakeFiles/Real_Time_trial.dir/process_testing_data.c.o: ../classifiers.h
 CMakeFiles/Real_Time_trial.dir/process_testing_data.c.o: ../constants.h
 CMakeFiles/Real_Time_trial.dir/process_testing_data.c.o: ../process_testing_data.c
+
+CMakeFiles/Real_Time_trial.dir/training_data_new.c.o: ../classifiers.h
+CMakeFiles/Real_Time_trial.dir/training_data_new.c.o: ../constants.h
+CMakeFiles/Real_Time_trial.dir/training_data_new.c.o: ../training_data_new.c
 
 CMakeFiles/Real_Time_trial.dir/training_file.c.o: ../classifiers.h
 CMakeFiles/Real_Time_trial.dir/training_file.c.o: ../constants.h
