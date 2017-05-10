@@ -1,2 +1,2 @@
 This is a clean version of our program.
-Only update that has been tested.
+Only update codes that have been tested.
