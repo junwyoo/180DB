@@ -17,20 +17,21 @@ void int_handler(int sig)
 
 int main()
 {
-	int i=0;
 	char *filename = malloc(sizeof(char*)*BUFF_SIZE);
 	
 	signal(SIGINT, int_handler);	
 
 	while(run_flag){
 	sprintf(filename, "test_%ld.csv", time(NULL));
-	printf("\tWriting %d.\n", i);
-	FILE* fp = fopen(filename, "w");
+	printf("\tTest file collection will begin.\n");
+
+
 	printf("Opened file %s\n", filename);
-	fprintf(fp, "%d", i);
-	i++;
-	sleep(1);
+	gather_data(filename,10,15);
+	printf("Testing file %s has been created.\n",filename);
+	sleep(20);
         }
+	return 0;
 }
 
 

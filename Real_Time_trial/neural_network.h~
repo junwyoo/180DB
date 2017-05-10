@@ -1,6 +1,7 @@
 #ifndef NEURAL_NETWORK_H_ 
 #define NEURAL_NETWORK_H_
 
+extern char *training_net_files;
 
 /* 
 Trains neural network by taking in a training file as an input. 
@@ -11,12 +12,12 @@ particular motion.
 
 The "layers" parameter contains the number of layers the neural network will hold.
 */
-void train_network(const char *training_file, char* output_file, int inputs, int outputs);
+void train_network(const char *training_file, char* output_file, int outputs, int layers);
 
 /* Tests neural network, takes in:
-	- Classifier values, first dimension is strides, second dimension is classifier values
+	- Classifier values
 	- Number of rows of classifiers
  */
-void test_neural_network(float **class_v, int num_rows_classifiers, char* name);
+void test_neural_network(float **class_v, int num_rows_classifiers, char* name)
 
 #endif // NEURAL_NETWORK_H_

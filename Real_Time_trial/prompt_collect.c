@@ -8,41 +8,42 @@
 #include "neural_network.h"
 #include "prompt_collect.h"
 
-
-/* included in .h
 #define BUFF_SIZE 1024
 #define FILES 28
 
-const char * activity_names[] = { // changed from "names"
-        "walk_speed_1_50sec_32m",
-        "walk_speed_2_35sec_32m",
-        "walk_speed_3_25sec_32m",
-        "walk_speed_4_15sec_32m",
-        "slow_run",
-        "medium_slow_run",
-        "medium_fast_run",
-        "fast_run",
-        "slow_stairs_up",
-        "medium_slow_stairs_up",
-        "medium_fast_stairs_up",
-        "fast_stairs_up",
-        "slow_stairs_down",
-        "medium_slow_stairs_down",
-        "medium_fast_stairs_down",
-        "fast_stairs_down",
-        "low_jump",
-        "medium_low_jump",
-        "medium_high_jump",
-        "high_jump",
-        "turning_right_speed_1",
-        "turning_right_speed_2",
-        "turning_right_speed_3",
-        "turning_right_speed_4",
-        "turning_left_speed_1",
-        "turning_left_speed_2",
-        "turning_left_speed_3",
-        "turning_left_speed_4" //28 csv files
-};
+
+int checkCSV(char *username)
+{
+  const char * activity_names[] = { // changed from "names"
+    "walk_speed_1_50sec_32m",
+    "walk_speed_2_35sec_32m",
+    "walk_speed_3_25sec_32m",
+    "walk_speed_4_15sec_32m",
+    "slow_run",
+    "medium_slow_run",
+    "medium_fast_run",
+    "fast_run",
+    "slow_stairs_up",
+    "medium_slow_stairs_up",
+    "medium_fast_stairs_up",
+    "fast_stairs_up",
+    "slow_stairs_down",
+    "medium_slow_stairs_down",
+    "medium_fast_stairs_down",
+    "fast_stairs_down",
+    "low_jump",
+    "medium_low_jump",
+    "medium_high_jump",
+    "high_jump",
+    "turning_right_speed_1",
+    "turning_right_speed_2",
+    "turning_right_speed_3",
+    "turning_right_speed_4",
+    "turning_left_speed_1",
+    "turning_left_speed_2",
+    "turning_left_speed_3",
+    "turning_left_speed_4" //28 csv files
+  };
 
 const int hold_time[FILES] = {
   10,//"walk_speed_1_50sec_32m",
@@ -109,7 +110,6 @@ const int record_time[FILES] = {
   10,//"turning_left_speed_3",
   10//"turning_left_speed_4"
 };
-*/
 
 int checkCSV(char *username)
 {
@@ -196,14 +196,13 @@ int checkCSV(char *username)
 	    }
 	}
       else // no missing file
-	return 1;
+      return 1;
     } //end of while loop
 
   printf("Critical Error: Should not output this message!\n");
   return -127;
 }
-
-
+}
 
 // [main function commented out below] //
 
@@ -225,7 +224,14 @@ int main(int argc, char** argv)
   }
 
   
-  /* 
+<<<<<<< HEAD
+<<<<<<< HEAD
+   
+=======
+  * 
+>>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
+=======
+>>>>>>> parent of 7f5b522... fixed makefile
      [INPUT EXAMPLE]
      ./main --train walking_3.csv   => train with name "yoo" & test
      ./main --test yoo    => test with name "yoo"
@@ -278,7 +284,7 @@ int main(int argc, char** argv)
     }
   if(argc == 2)
     username = argv[1];
-  /*Option handling ends*/
+  *Option handling ends*/
 
 /*
   printf("Your name is: %s\n",username);
