@@ -58,7 +58,7 @@ void test_neural_network(float **class_v, int num_rows_classifiers, char* name){
 
         // Populate our input array in preparation for neural network
         for (j=0; j < NUM_CLASSIFIERS; j++){
-            input[j] = class_v[i];
+            (float*)input[j] = class_v[i];
         }
 
         calc_out_motion = fann_run(motion_ann, input);

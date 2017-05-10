@@ -18,6 +18,6 @@ void train_network(const char *training_file, char* output_file, int outputs, in
 	- Classifier values
 	- Number of rows of classifiers
  */
-void test_neural_network(float **class_v, int num_rows_classifiers, char* name);
+void test_neural_network(float **class_v, int num_rows_classifiers, char* name)
 
 #endif // NEURAL_NETWORK_H_
