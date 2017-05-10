@@ -9,6 +9,7 @@
 #include <string.h>
 #include "constants.h"
 #include "classifiers.h"
+#include "training_data_new.h"
 #include <stdlib.h>
 #include <sys/time.h>
 #include <sys/stat.h>
