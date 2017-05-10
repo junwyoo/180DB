@@ -8,7 +8,7 @@ int main()
 
   trainData();
   
-  //  [test Data]  
+  //  [test Data]
   system("./consumer");
   system("./producer");
 }

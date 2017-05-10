@@ -15,24 +15,30 @@ void int_handler(int sig)
 	run_flag = 0;
 }
 
-int main()
+int main(int argc, char **argv)
 {
+	if(argc != 2)
+	{
+		fprintf(stderr,"Error: incorrect number of arguments\n");
+		exit(1);
+	}
+
+	char *username = argv[1];
 	char *filename = malloc(sizeof(char*)*BUFF_SIZE);
 	
+
 	signal(SIGINT, int_handler);	
+	
+	printf("Testing with name (%s)\n",username);
 
 	while(run_flag){
-	sprintf(filename, "test_%ld.csv", time(NULL));
+	sprintf(filename, "test_%s_%ld.csv", username, time(NULL));
 	printf("\tTest file collection will begin.\n");
-
 
 	printf("Opened file %s\n", filename);
 	gather_data(filename,10,15);
 	printf("Testing file %s has been created.\n",filename);
-	sleep(20);
+	sleep(1);
         }
 	return 0;
 }
-
-
-
