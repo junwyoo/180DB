@@ -201,7 +201,7 @@ int checkCSV(char *username)
 
   printf("Critical Error: Should not output this message!\n");
   return -127;
-
+}
 }
 
 // [main function commented out below] //
@@ -284,7 +284,7 @@ int main(int argc, char** argv)
     }
   if(argc == 2)
     username = argv[1];
-  /*Option handling ends*/
+  *Option handling ends*/
 
 /*
   printf("Your name is: %s\n",username);
