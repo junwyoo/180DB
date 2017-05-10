@@ -1,7 +1,3 @@
-//
-// Created by Amaael Antonini on 5/5/17.
-//
-
 #ifndef REAL_TIME_TRIAL_CONSTANTS_H
 #define REAL_TIME_TRIAL_CONSTANTS_H
 
@@ -14,8 +10,17 @@
 
 
 #define DATA 7          // number of columns in file time acceleration x, y, z, gyro x, y, z
-#define FEATURES 27     // number of features to use
 
+//////////////////////////////////////////////////////////////////////////////
+// NEURAL NETWORK CONSTANTS
+//////////////////////////////////////////////////////////////////////////////
+#define FEATURES 27						// number of features (i.e. classifiers)
+#define NUM_MOTIONS 6					// number of motions we want to analyze
+#define NUM_WALKING_SPEEDS 4
+#define NUM_RUNNING_SPEEDS 3
+#define NUM_JUMPING_SPEEDS 4
+#define NUM_STAIR_ASCENT_SPEEDS 4
+#define NUM_STAIR_DESCENT_SPEEDS 4
 
 
 #define BUFF_SIZE 1024  // buffer for chars
@@ -37,8 +42,9 @@
 #define TEST_SIZE 10
 #define MAX_FILES 1000
 
-#define NUM_CLASSIFIERS 27
-#define NUM_MOTIONS 4
+// For neural network
+extern const char* training_net_directory;
+
 
 extern const int who;
 
@@ -51,8 +57,6 @@ extern const char * activities_file;
 extern const char * train_speeds[];
 extern const char *train_name;
 extern const char * test_name;
-
-
 
 extern const int activities[];
 extern const int speeds_outputs[];

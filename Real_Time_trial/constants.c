@@ -1,9 +1,7 @@
-//
-// Created by Amaael Antonini on 5/5/17.
-//
 #include "constants.h"
 
 const char * main_path = "/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_time_trial/";
+
 const char * paths[] = {"Data_sets/AA2_data/", "Data_sets/DA2_data/"};
 const char * user_names[] = {"AA2", "DA2"};
 // output file names for parameters, currently not in use
@@ -17,9 +15,11 @@ const char * test_name = "test";
 const char * activities_file = "activities";
 const int who = 0;
 
+// For neural networks
+const char *training_net_directory = "./TRAINING_NET_FILES/";
+
 const char * train_file = "Train_Data_Set";
 const char * test_dir = "Test_Dir";
-
 
 const char * train_speeds[] = {"walk", "run", "stairs_up", "stairs_down", "jump"};
 

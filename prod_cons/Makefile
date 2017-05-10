@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -O2 -lmraa -lfann
+CFLAGS = -g -Wall -O2 #-lmraa -lfann
 
 default: consumer producer
 

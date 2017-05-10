@@ -7,26 +7,46 @@
 #include "constants.h"
 
 
+
 int main(int argc, char **argv) {
 
-    float ***classifiers = NULL;
+    int i, j, k;
+
+    float ***classifiers;
+    classifiers = (float ***) malloc(sizeof ( float **) * FILES);
+    for(i = 0; i < FILES; i++)
+    {
+        classifiers[i] = (float **) malloc(sizeof ( float *) * FEATURES);
+    }
+    for(i = 0; i < FILES; i++)
+    {
+        for(j = 0; j < FEATURES; j++)
+        {
+            classifiers[i][j] = (float *) malloc(sizeof ( float) * STRIDES);
+            memset(classifiers[i][j], 0, sizeof(float) * STRIDES);
+        }
+
+    }
     // pointer to 3 d array with first D1 is activities,
     // second D2 is rows per activity,
     // third D3 is number of classifies (27 for now)
-    int *dimen = NULL;
+    int *dimen;
+    dimen = (int *) malloc(sizeof (int) * FILES);
+    memset(dimen, 0, sizeof(int) * FILES);
     int input;
     input = FEATURES;
     // when training, there will be sum o n rows if dim[i] for i from 0 to n-1 rows
     // dim[i] is the truth value or element 1 in row of -1 -1 -1 1(ith) -1
 
     // example follows
-    int i, j, k;
+
     int speeds;
 //    float **test_array;
     int num_of_test_classifers;
     int truth_value;
-    char **training_name;
+    char **dot_text_names;
     char **dot_net_name;
+    char **dot_csv_name;
     int dot_net_files;
 
     char *name;
@@ -36,23 +56,33 @@ int main(int argc, char **argv) {
     sprintf(name, "AA");
 //    sprintf(name, argv[1]);
 
-    training_name = (char **) malloc(sizeof(char*) * (ACTIVITIES + 1));
+    dot_text_names = (char **) malloc(sizeof(char*) * (ACTIVITIES + 1));
     dot_net_name = (char **) malloc(sizeof(char*) * (ACTIVITIES + 1));
+    dot_csv_name = (char **) malloc(sizeof(char*) * (FILES));
 
     for (i = 0; i < ACTIVITIES + 1; i++) {
         dot_net_name[i] = (char *) malloc(sizeof(char) * BUFF_SIZE);
-        training_name[i] = (char *) malloc(sizeof(char) * BUFF_SIZE);
+        dot_text_names[i] = (char *) malloc(sizeof(char) * BUFF_SIZE);
         memset(dot_net_name[i], 0, sizeof(char) * BUFF_SIZE);
-        memset(dot_net_name[i], 0, sizeof(char) * BUFF_SIZE);
+        memset(dot_text_names[i], 0, sizeof(char) * BUFF_SIZE);
     }
+    for (i = 0; i < FILES; i++) {
+        dot_csv_name[i] = (char *) malloc(sizeof(char) * BUFF_SIZE);
+        memset(dot_csv_name[i], 0, sizeof(char) * BUFF_SIZE);
+//        sprintf(dot_csv_name[i], "%s%s_%s/%s_%s.csv", main_path, train_file, name, names[i], name);
+
+        // replace this line by the one above
+        sprintf(dot_csv_name[i], "%s%s%s_%s%d.csv", main_path, paths[0], names[i], name, 2);
+    }
+
     printf("if loop\n");
 
                                             // path, folder user
     sprintf(dot_net_name[0], "%s%s_%s/%s_%s.net", main_path, train_file, name, activities_file, name);
-    sprintf(training_name[0],"%s%s_%s/%s_%s_%s", main_path, train_file, name, activities_file, name, train_name);
+    sprintf(dot_text_names[0],"%s%s_%s/%s_%s_%s", main_path, train_file, name, activities_file, name, train_name);
     for (i = 0; i < ACTIVITIES; i++) {
         sprintf(dot_net_name[i+1], "%s%s_%s/%s_%s.net", main_path, train_file, name, train_speeds[i], name);
-        sprintf(training_name[i+1],"%s%s_%s/%s_%s_%s", main_path, train_file, name, train_speeds[i], name, train_name);
+        sprintf(dot_text_names[i+1],"%s%s_%s/%s_%s_%s", main_path, train_file, name, train_speeds[i], name, train_name);
         // now lists of .net and txt names are ready
     }
     dot_net_files = 1;
@@ -63,25 +93,80 @@ int main(int argc, char **argv) {
     if (dot_net_files == -1) {
         printf("Training is required, proceeding to trainging\n");
         // function call
+        // int success = checkcsv(name);
     }
 
+    float ***data;
+    float ***sigma;
+    float ***mean;
+    int ** strides_t1, *count_t1;
+    int ** strides_t2, *count_t2;
+    int *data_lengths;
+
+    count_t1 = (int*) malloc(sizeof(int) * FILES);
+    count_t2 = (int*) malloc(sizeof(int) * FILES);
+    memset(count_t2, 0, sizeof(int) * FILES);
+    memset(count_t1, 0, sizeof(int) * FILES);
+    strides_t1 = (int**) malloc(sizeof(int*) * FILES);
+    strides_t2 = (int**) malloc(sizeof(int*) * FILES);
+    for(i = 0; i < FILES; i++)
+    {
+        strides_t1[i] = (int*) malloc(sizeof(int) * STRIDES);
+        strides_t2[i] = (int*) malloc(sizeof(int) * STRIDES);
+        memset(strides_t2[i], 0, sizeof(int) * FILES);
+        memset(strides_t1[i], 0, sizeof(int) * FILES);
+    }
+    data_lengths = (int*) malloc(sizeof(int) * FILES);
+    data = (float ***) malloc(FILES * sizeof(float **));
+    mean = (float ***) malloc(FILES * sizeof(float **));
+    sigma = (float ***) malloc(FILES * sizeof(float **));
+    for (i = 0; i < FILES; i++) {
+        data[i] = (float **) malloc(sizeof(float*) * DATA);
+        mean[i] = (float **) malloc(sizeof(float*) * DATA);
+        sigma[i] = (float **) malloc(sizeof(float*) * DATA);
+    }
+    for (i = 0; i < FILES; i++) {
+        for(j = 0; j < DATA; j++)
+        {
+            data[i][j] = (float *) malloc(sizeof(float) * MAX_DATA);
+            mean[i][j] = (float *) malloc(sizeof(float) * MAX_DATA);
+            sigma[i][j] = (float *) malloc(sizeof(float) * MAX_DATA);
+            memset(data[i][j], 0, sizeof(float) * MAX_DATA);
+            memset(sigma[i][j], 0, sizeof(float) * MAX_DATA);
+            memset(mean[i][j], 0, sizeof(float) * MAX_DATA);
+        }
+
+    }
+    /*
+    walking = 4;
+    running = 4;
+    jumping = 4;
+    stair ascent = 4;
+    stair descent = 4;
+    turning left = 4;
+    turning right = 4;
+    */
+
     if (dot_net_files == -1) {
-        // data returned success
+        // also if data returned success
         printf("after training\n");
         // add name to train parameters function
-        train_parameters(&classifiers, &dimen);
+        strides(dot_csv_name, data, sigma, mean, data_lengths, strides_t2, count_t2, strides_t1, count_t1);
+        // turning_features(data, sigma, mean, data_lengths, stride_t2, count_t2);
+        features(data, mean, sigma, strides_t2, count_t2, classifiers, dimen);
+//        train_parameters(&classifiers, &dimen);
         printf("before text file\n");
-        training_file(classifiers, training_name[0], dimen, activities, input, 0, FILES, ACTIVITIES);
+        training_file(classifiers, dot_text_names[0], dimen, activities, input, 0, FILES, ACTIVITIES);
 
         for (i = 0; i < ACTIVITIES; i++) {
             speeds = speeds_end[i] - speeds_start[i];
-            training_file(classifiers, training_name[i+1], dimen, speeds_outputs, input, speeds_start[i], speeds_end[i],
+            training_file(classifiers, dot_text_names[i+1], dimen, speeds_outputs, input, speeds_start[i], speeds_end[i],
                           speeds);
         }
         //train neural_network
 
         for (i = 0; i < ACTIVITIES + 1; i++) {
-            train_network(training_name[i]);
+            train_network(dot_text_names[i], dot_net_name[i], 4);
         }
         for (i = 0; i < FILES; i++) {
             for (j = 0; j < dimen[i]; j++) {
