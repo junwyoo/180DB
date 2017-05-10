@@ -1,12 +1,15 @@
 #include "fann.h"
 #include "constants.h"
 
-/* Note that output files must have a .net suffix, e.g. "TRAINING.net" */
-void train_network(const char *training_file, char *output_file)
+/* Notes:
+    - Output files must have a .net suffix, e.g. "TRAINING.net"
+    - "inputs" parameters is usually equal to number of classifiers
+ */
+void train_network(const char *training_file, char *output_file, int inputs, int outputs)
 {
-    const unsigned int num_input = FEATURES;
-    const unsigned int num_output = 4;
-    const unsigned int num_layers = 3;
+    const unsigned int num_input = inputs;
+    const unsigned int num_output = outputs;
+    const unsigned int num_layers = layers;
     const unsigned int num_neurons_hidden = 9;
     const float desired_error = (const float) 0.01;
     const unsigned int max_epochs = 5000;
@@ -25,5 +28,5 @@ void train_network(const char *training_file, char *output_file)
 
     fann_destroy(ann);
 
-    return 0;
+    //return 0;
 }
