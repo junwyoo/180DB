@@ -5,6 +5,7 @@
 #define BUFF_SIZE 1024
 #define FILES 28
 
+<<<<<<< HEAD
 const char * activity_names[] = { // changed from "names"
         "walk_speed_1_50sec_32m",
         "walk_speed_2_35sec_32m",
@@ -103,6 +104,13 @@ const int record_time[FILES] = {
 };
 */
 
+=======
+/*
+const char * activity_names[];
+const int hold_time[FILES];
+const int record_time[FILES];
+*/
+>>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
 //check CSV files and collect data according to user's decision
 //returns 1 if all the CSV files are there.
 //returns -1 if one or more CSV files are missing.
