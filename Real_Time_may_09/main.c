@@ -195,8 +195,12 @@ int main(int argc, char **argv) {
                 printf("\n");
             }
         }
-        for (i = 0; i < ACTIVITIES + 1; i++) {
-            train_network(dot_text_names[i]);
+
+        train_network(dot_text_names[0], dot_net_files[0], 27, 5);
+        train_network(dot_text_turning, dot_net_turning, 27, 3);
+
+        for (i = 1; i < ACTIVITIES + 1; i++) {
+            train_network(dot_text_names[i], dot_net_files[i], 27, 4);
         }
         for (i = 0; i < FILES; i++) {
             for (j = 0; j < dimen[i]; j++) {
