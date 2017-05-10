@@ -1,11 +1,13 @@
 CC=gcc
-CFLAGS= -w #-Wall
+CFLAGS=-Wall
 LDFLAGS= -lmraa -lm
-SOURCES=main.c classifiers.c constants.c training_data_new.c prompt_collect.c test_neural_network.c train_neural_network.c neural_network.h
+SOURCES=main.c classifiers.h constants.h training_data_new.h prompt_collect.h
+
+EXECUTABBLES= main.c
 
 all: main
 
-main:
-	$(CC) $(CFLAGS) -o main $(SOURCES) $(LDFLAGS)
+main: #main.c # process.c classifiers.c constants.c training_data_new.c prompt_collect.c
+	$(CC) $(CFLAGS) -o main -w $(SOURCES) $(LDFLAGS)
 clean:
 

@@ -2,7 +2,7 @@
 #define REAL_TIME_TRIAL_CONSTANTS_H
 
 
-#define FILES 28        // number of files for training
+#define FILES 12        // number of files for training
 #define ACTIVITIES 5    // number of activities
 // TO DO replace this next lines for new below
 //#define FILES 28        // number of files for training
@@ -31,7 +31,7 @@
 #define SLOTS 4         // split strides into slots
 #define PRINT 100000    // buffer
 
-//#define NULL 0          // 0 char
+#define NULL 0          // 0 char
 
 
 #define WAIT 30         // time to wait before starting to train

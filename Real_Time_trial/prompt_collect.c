@@ -10,10 +10,18 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define BUFF_SIZE 1024
 #define FILES 28
 /*
 const char * activity_names[FILES] = { // changed from "names"
+=======
+/* included in .h
+#define BUFF_SIZE 1024
+#define FILES 28
+
+const char * activity_names[] = { // changed from "names"
+>>>>>>> parent of 7f5b522... fixed makefile
         "walk_speed_1_50sec_32m",
         "walk_speed_2_35sec_32m",
         "walk_speed_3_25sec_32m",
@@ -43,6 +51,7 @@ const char * activity_names[FILES] = { // changed from "names"
         "turning_left_speed_3",
         "turning_left_speed_4" //28 csv files
 };
+<<<<<<< HEAD
 =======
 int checkCSV(char *username)
 {
@@ -77,74 +86,80 @@ int checkCSV(char *username)
     "turning_left_speed_4" //28 csv files
   };
 >>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
+=======
+>>>>>>> parent of 7f5b522... fixed makefile
 
-  const int hold_time[FILES] = {
-    10,//"walk_speed_1_50sec_32m",
-    10,//"walk_speed_2_35sec_32m",
-    10,//"walk_speed_3_25sec_32m",
-    10,//"walk_speed_4_15sec_32m",
-    10,//"slow_run",
-    10,//"medium_slow_run",
-    10,//"medium_fast_run",
-    10,//"fast_run",
-    10,//"slow_stairs_up",
-    10,//"medium_slow_stairs_up",
-    10,//"medium_fast_stairs_up",
-    10,//"fast_stairs_up",
-    10,//"slow_stairs_down",
-    10,//"medium_slow_stairs_down",
-    10,//"medium_fast_stairs_down",
-    10,//"fast_stairs_down",
-    10,//"low_jump",
-    10,//"medium_low_jump",
-    10,//"medium_high_jump",
-    10,//"high_jump",
-    10,//"turning_right_speed_1",
-    10,//"turning_right_speed_2",
-    10,//"turning_right_speed_3",
-    10,//"turning_right_speed_4",
-    10,//"turning_left_speed_1",
-    10,//"turning_left_speed_2",
-    10,//"turning_left_speed_3",
-    10//"turning_left_speed_4"
-  };
-  const int record_time[FILES] = {
-    15,//"walk_speed_1_50sec_32m",
-    15,//"walk_speed_2_35sec_32m",
-    10,//"walk_speed_3_25sec_32m",
-    10,//"walk_speed_4_15sec_32m",
+const int hold_time[FILES] = {
+  10,//"walk_speed_1_50sec_32m",
+  10,//"walk_speed_2_35sec_32m",
+  10,//"walk_speed_3_25sec_32m",
+  10,//"walk_speed_4_15sec_32m",
+  10,//"slow_run",
+  10,//"medium_slow_run",
+  10,//"medium_fast_run",
+  10,//"fast_run",
+  10,//"slow_stairs_up",
+  10,//"medium_slow_stairs_up",
+  10,//"medium_fast_stairs_up",
+  10,//"fast_stairs_up",
+  10,//"slow_stairs_down",
+  10,//"medium_slow_stairs_down",
+  10,//"medium_fast_stairs_down",
+  10,//"fast_stairs_down",
+  10,//"low_jump",
+  10,//"medium_low_jump",
+  10,//"medium_high_jump",
+  10,//"high_jump",
+  10,//"turning_right_speed_1",
+  10,//"turning_right_speed_2",
+  10,//"turning_right_speed_3",
+  10,//"turning_right_speed_4",
+  10,//"turning_left_speed_1",
+  10,//"turning_left_speed_2",
+  10,//"turning_left_speed_3",
+  10//"turning_left_speed_4"
+};
+const int record_time[FILES] = {
+  15,//"walk_speed_1_50sec_32m",
+  15,//"walk_speed_2_35sec_32m",
+  10,//"walk_speed_3_25sec_32m",
+  10,//"walk_speed_4_15sec_32m",
 
-    15,//"slow_run",
-    15,//"medium_slow_run",
-    10,//"medium_fast_run",
-    10,//"fast_run",
+  15,//"slow_run",
+  15,//"medium_slow_run",
+  10,//"medium_fast_run",
+  10,//"fast_run",
   
-    15,//"slow_stairs_up",
-    15,//"medium_slow_stairs_up",
-    10,//"medium_fast_stairs_up",
-    10,//"fast_stairs_up",
-    15,//"slow_stairs_down",
-    15,//"medium_slow_stairs_down",
-    10,//"medium_fast_stairs_down",
-    10,//"fast_stairs_down",
+  15,//"slow_stairs_up",
+  15,//"medium_slow_stairs_up",
+  10,//"medium_fast_stairs_up",
+  10,//"fast_stairs_up",
+  15,//"slow_stairs_down",
+  15,//"medium_slow_stairs_down",
+  10,//"medium_fast_stairs_down",
+  10,//"fast_stairs_down",
 
-    15,//"low_jump",
-    15,//"medium_low_jump",
-    15,//"medium_high_jump",
-    15,//"high_jump",
+  15,//"low_jump",
+  15,//"medium_low_jump",
+  15,//"medium_high_jump",
+  15,//"high_jump",
 
-    15,//"turning_right_speed_1",
-    15,//"turning_right_speed_2",
-    10,//"turning_right_speed_3",
-    10,//"turning_right_speed_4",
+  15,//"turning_right_speed_1",
+  15,//"turning_right_speed_2",
+  10,//"turning_right_speed_3",
+  10,//"turning_right_speed_4",
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 7f5b522... fixed makefile
   15,//"turning_left_speed_1",
   15,//"turning_left_speed_2",
   10,//"turning_left_speed_3",
   10//"turning_left_speed_4"
 };
 */
+<<<<<<< HEAD
 int checkCSV(char *username)
 {
 =======
@@ -155,6 +170,11 @@ int checkCSV(char *username)
   };
 
 >>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
+=======
+
+int checkCSV(char *username)
+{
+>>>>>>> parent of 7f5b522... fixed makefile
   int redo_prompt = 0;
   int i;
   int n_missing = 0;
@@ -267,10 +287,14 @@ int main(int argc, char** argv)
 
   
 <<<<<<< HEAD
+<<<<<<< HEAD
    
 =======
   * 
 >>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
+=======
+  /* 
+>>>>>>> parent of 7f5b522... fixed makefile
      [INPUT EXAMPLE]
      ./main --train walking_3.csv   => train with name "yoo" & test
      ./main --test yoo    => test with name "yoo"
@@ -323,7 +347,7 @@ int main(int argc, char** argv)
     }
   if(argc == 2)
     username = argv[1];
-  *Option handling ends*/
+  /*Option handling ends*/
 
 /*
   printf("Your name is: %s\n",username);
