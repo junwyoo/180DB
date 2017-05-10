@@ -1,0 +1,226 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+math.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/collection.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.c
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/consumer.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/do_not_use_file.c
+stdio.h
+-
+signal.h
+-
+math.h
+-
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+string.h
+-
+sys/time.h
+-
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/features.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/main.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/process.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/process_testing_data.c
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/strides.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/training_data_new.c
+stdio.h
+-
+signal.h
+-
+math.h
+-
+unistd.h
+-
+string.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+stdlib.h
+-
+sys/time.h
+-
+sys/stat.h
+-
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/training_file.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/trial.c
+sys/types.h
+-
+sys/stat.h
+-
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/turning_file.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Real_Time_may_09/constants.h
+
