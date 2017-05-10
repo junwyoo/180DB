@@ -36,7 +36,15 @@ int main(int argc, char **argv)
 	printf("\tTest file collection will begin.\n");
 
 	printf("Opened file %s\n", filename);
-	gather_data(filename,10,15);
+
+	//gather_data(filename,10,15); //this is for real testing
+	FILE *fp = fopen(filename,"w"); //this is for dummy testing
+	if(fp!=NULL)
+	{
+		fprintf(fp,"filename: %s\n", filename);
+	}
+	fclose(fp);
+
 	printf("Testing file %s has been created.\n",filename);
 	sleep(1);
         }

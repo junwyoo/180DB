@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <signal.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -27,8 +28,13 @@ int main(int argc, char** argv)
 
 	char *username = argv[1];
 	char *cmd = (char*) malloc(sizeof(char)*BUFF_SIZE);
+	char *dir = (char*) malloc(sizeof(char)*BUFF_SIZE);
+	char *lineptr = (char*)malloc(sizeof(char)*BUFF_SIZE);
+	size_t len = 0;	
 	FILE *fp;
 
+	sprintf(dir,"%s_trash",username);	
+	mkdir(dir, 0777);
 	while(run_flag)
 	{
 		sprintf(cmd,"ls test_%s_*.csv > filename_list.txt", username);
@@ -41,9 +47,14 @@ int main(int argc, char** argv)
 			fprintf(stderr,"ERROR: Failed opening\n");
 		else{
 			printf("Successfully opened.\n");
-			char *buf = malloc(sizeof(char*)*BUFF_SIZE);
-			fscanf(fp, "%s", buf);
-			fprintf(stdout, "\tRead file contents:%s\n",buf);
+			fprintf(stdout, "\tReading file contents:\n"); 
+			while(getline(&lineptr,&len,fp) != -1)
+			{
+			  fprintf(stdout, "%s",lineptr);
+			  lineptr[strlen(lineptr)-1] = '\0';
+			  sprintf(cmd,"mv %s %s/%s",lineptr,dir,lineptr);
+			  system(cmd);	  
+			}
 			sleep(2);
 			}
 		fclose(fp);	

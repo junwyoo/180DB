@@ -9,6 +9,6 @@ int main()
   trainData();
   
   //  [test Data]
-  system("./consumer");
-  system("./producer");
+  system("./consumer yoo");
+  system("./producer yoo");
 }
