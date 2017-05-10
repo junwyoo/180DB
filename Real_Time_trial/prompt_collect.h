@@ -108,17 +108,11 @@ const int record_time[FILES] = {
 <<<<<<< HEAD
 */
 
-=======
 /*
 const char * activity_names[];
 const int hold_time[FILES];
 const int record_time[FILES];
 */
->>>>>>> 7f5b522a382a4aa6663da45f7628f2b81f257614
-=======
-
-
->>>>>>> parent of 7f5b522... fixed makefile
 //check CSV files and collect data according to user's decision
 //returns 1 if all the CSV files are there.
 //returns -1 if one or more CSV files are missing.
