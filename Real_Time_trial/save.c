@@ -1,11 +1,19 @@
-//
-// Created by Amaael Antonini on 5/7/17.
-//
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
+#include "classifiers.h"
 
+// CHECK: Be sure to include only 1 below
+#include "constants.h"
+#include "new_constants.h"
 
-
-
+// Will be used to see if directory exists
+struct stat st = {0};
 
 void collect_training_data(char * folder, char *user)
 {
@@ -267,30 +275,20 @@ void gather_data(char *file_name, int hold_time, int record_time)
 }
 
 
-
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include "classifiers.h"
-#include "constants.h"
-
-
 //const int activities[] =        {0, 0, 0, 0, 1, 1, 1, 2, 3, 4, 4, 4};
 //const int speeds_outputs[] =    {0, 1, 2, 3, 0, 1, 2, 0, 0, 0, 1, 2};
 //const int speeds_start[]  =     {0, 4, 7, 8, 9};
 //const int speeds_end[] =        {4, 7, 8, 9, 12};
 int main(int argc, char **argv) {
 
+    /* Test parameters below; to be erased later */
+    //////////////////////////////////////////////////////////////////////////////////////
     char *fake_test;
     fake_test = (char *) malloc(sizeof(char) * BUFF_SIZE);
     memset(fake_test, 0, sizeof(char) * BUFF_SIZE);
     sprintf(fake_test, "%s%s%s_%s.csv", main_path, paths[0], names[0], user_names[0]);
-
-    //char * test_file_name;
-//    test_file_name = (char*)malloc(sizeof(char)*BUFF_SIZE);
-//    memset(test_file_name, 0, BUFF_SIZE);
+    float **test_array;
+    //////////////////////////////////////////////////////////////////////////////////////
 
     float ***classifiers = NULL;
     // pointer to 3 d array with first D1 is activities,
@@ -305,49 +303,89 @@ int main(int argc, char **argv) {
     // second D2 is rows per activity
     int n;
     // n is integer with number of activities (12 for now)
-    int input;
-    input = FEATURES;
+    
+    int input = FEATURES;
     // when training, there will be sum o n rows if dim[i] for i from 0 to n-1 rows
     // dim[i] is the truth value or element 1 in row of -1 -1 -1 1(ith) -1
 
     // example follows
-    int i, j, k;
-    int speeds;
-    float **test_array;
-    int num_of_test_classifers;
-    int truth_value;
-    char *training_name;
+    int i, j, k, speeds, num_of_test_classifers, truth_value;
+ 
+    char *training_name, *reuse_buffer;
     training_name = (char *) malloc(sizeof(char) * BUFF_SIZE);
-//    if(access("training.txt", F_OK) == -1 || (argv[1] == "y" || argv[1] == "Y")){
-    printf("if loop\n");
+    reuse_buffer = (char *) malloc(sizeof(char) * BUFF_SIZE);
 
 
+
+    // Creation of our .net files, used to train our neural networks 
     int dot_net_files = 0;
-    char *dot_net_name;
-    dot_net_name = (char *) malloc(sizeof(char) * BUFF_SIZE);
+    char *dot_net_name = (char *) malloc(sizeof(char) * BUFF_SIZE);
     memset(dot_net_name, 0, sizeof(char) * BUFF_SIZE);
     sprintf(dot_net_name, "%s_%s/%s_%s.net", main_path, argv[1], train_file, activities_file, argv[1]);
+
+    // Check if our particular .net file exists, if not set flag to -1
+    // CHECK: is this redundant?
     if (access(dot_net_name, F_OK) == -1)
         dot_net_files = -1;
+
+    // Go through all our activities, see if all our required .net files exist; if not, set flag to -1
     for (i = 0; i < ACTIVITIES; i++) {
         memset(dot_net_name, 0, sizeof(char) * BUFF_SIZE);
         sprintf(dot_net_name, "%s_%s/%s_%s.net", main_path, argv[1], train_speeds[i], argv[1]);
         if (access(dot_net_name, F_OK) == -1)
             dot_net_files = -1;
     }
+
+    /* Create our directory to hold all of our .net files, for training purposes */
+    int create_net_directory = 0;
+    if (stat(training_net_directory, &st) == -1) {
+        create_net_directory = mkdir(training_net_directory, 0700);
+        
+        // Check if directory was created properly
+        if (create_net_directory == -1){
+            printf("WARNING: Unable to create .net files directory %s.\n");
+        }
+    }
+
+    // CHECK: Make sure two if statements below can be combined
     if (dot_net_files == -1) {
-        printf("Training is required, proceeding to trainging\n");
+        printf("Training is required, proceeding to training.\n");
         // function call
     }
 
     if (dot_net_files == -1) {
         printf("after training\n");
+        
         // add name to train parameters function
         train_parameters(&classifiers, &counts, &dimen, &n);
         memset(training_name, 0, sizeof(char) * BUFF_SIZE);
         sprintf(training_name, "%s%s_%s", main_path, activities_file, train_name);
         printf("before text file\n");
+        
+        /* CHECK: Why do we call training files here and again in the for loop below? Why not something like:
+
+        for (i = 0; i < FILES; i++){
+
+            memset(reuse_buffer, 0, sizeof(char) * BUFF_SIZE);
+            memset(training_name, 0, sizeof(char) * BUFF_SIZE);
+            
+            sprintf(training_name, "%s%s_%s", main_path, train_speeds[i], train_name);
+            speeds = speeds_end[i] - speeds_start[i];
+            training_file(classifiers, '
+                            training_name, 
+                            dimen, 
+                            speeds_outputs, 
+                            input, 
+                            speeds_start[i], 
+                            speeds_end[i],
+                            speeds);
+
+            train_network(training_file, , );
+        }
+        
+        */
         training_file(classifiers, training_name, dimen, activities, input, 0, n, ACTIVITIES);
+        
         for (i = 0; i < ACTIVITIES; i++) {
             memset(training_name, 0, sizeof(char) * BUFF_SIZE);
             sprintf(training_name, "%s%s_%s", main_path, train_speeds[i], train_name);
@@ -355,8 +393,11 @@ int main(int argc, char **argv) {
             training_file(classifiers, training_name, dimen, speeds_outputs, input, speeds_start[i], speeds_end[i],
                           speeds);
         }
-        //train neural_network
+        
+        // Train neural_network with given training file
         train_network(train_name);
+        
+        // Free memory
         for (i = 0; i < n; i++) {
             for (j = 0; j < dimen[i]; j++) {
                 free(classifiers[i][j]);
@@ -382,7 +423,12 @@ int main(int argc, char **argv) {
     int l = 0;
     const char *test_file_name;
     test_file_name = (char*)malloc(sizeof(char)*BUFF_SIZE);
+    
+
     //memset(test_file_name, 0, sizeof(char)*BUFF_SIZE);
+
+
+
 
 //    while (loops < CYCLES && run_flag){
     while (loops < FILES ) {

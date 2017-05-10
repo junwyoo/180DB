@@ -1,9 +1,10 @@
 #include "fann.h"
+#include "constants.h"
 
 /* Note that output files must have a .net suffix, e.g. "TRAINING.net" */
 void train_network(const char *training_file, char *output_file)
 {
-    const unsigned int num_input = 27;
+    const unsigned int num_input = FEATURES;
     const unsigned int num_output = 4;
     const unsigned int num_layers = 3;
     const unsigned int num_neurons_hidden = 9;
