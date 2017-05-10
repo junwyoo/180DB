@@ -6,14 +6,13 @@
 #include <sys/stat.h>
 
 #include "neural_network.h"
-#include "prompt_collect.h"
+//#include "prompt_collect.h"
 
 
-/* included in .h
 #define BUFF_SIZE 1024
 #define FILES 28
-
-const char * activity_names[] = { // changed from "names"
+/*
+const char * activity_names[FILES] = { // changed from "names"
         "walk_speed_1_50sec_32m",
         "walk_speed_2_35sec_32m",
         "walk_speed_3_25sec_32m",
@@ -110,7 +109,6 @@ const int record_time[FILES] = {
   10//"turning_left_speed_4"
 };
 */
-
 int checkCSV(char *username)
 {
   int redo_prompt = 0;
@@ -196,14 +194,13 @@ int checkCSV(char *username)
 	    }
 	}
       else // no missing file
-	return 1;
+      return 1;
     } //end of while loop
 
   printf("Critical Error: Should not output this message!\n");
   return -127;
+
 }
-
-
 
 // [main function commented out below] //
 
@@ -225,7 +222,7 @@ int main(int argc, char** argv)
   }
 
   
-  /* 
+   
      [INPUT EXAMPLE]
      ./main --train walking_3.csv   => train with name "yoo" & test
      ./main --test yoo    => test with name "yoo"
@@ -278,7 +275,7 @@ int main(int argc, char** argv)
     }
   if(argc == 2)
     username = argv[1];
-  /*Option handling ends*/
+  *Option handling ends*/
 
 /*
   printf("Your name is: %s\n",username);

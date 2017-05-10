@@ -1,7 +1,6 @@
 #ifndef PROMPT_COLLECT_H_
 #define PROMPT_COLLECT_H_
 
-/*
 #define BUFF_SIZE 1024
 #define FILES 28
 
@@ -101,7 +100,7 @@ const int record_time[FILES] = {
   10,//"turning_left_speed_3",
   10//"turning_left_speed_4"
 };
-*/
+
 
 //check CSV files and collect data according to user's decision
 //returns 1 if all the CSV files are there.
