@@ -38,6 +38,7 @@
 #define NORM 1000000.0f // normalizer for data collection
 #define IDLE 40         // idle time collecting data
 
+// For producer.c
 #define TEST_SIZE 10
 #define MAX_FILES 1000
 
