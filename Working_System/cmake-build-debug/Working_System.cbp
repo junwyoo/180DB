@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Working_System"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Working_System">
+				<Option output="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug/Working_System" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 Working_System"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Working_System/fast">
+				<Option output="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug/Working_System" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 Working_System/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/amaaelantonini/Google\ Drive/Local/Spring_2017/EE\ 180DB/Working_System/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/collection.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/consumer.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/do_not_use_file.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/features.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/main.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/process.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/strides.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/training_data_new.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/training_file.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/turning_file.c">
+			<Option target="Working_System"/>
+		</Unit>
+		<Unit filename="/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,214 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+math.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/collection.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.c
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/consumer.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+time.h
+-
+signal.h
+-
+string.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+limits.h
+-
+sys/stat.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+neural_network.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/neural_network.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/do_not_use_file.c
+stdio.h
+-
+signal.h
+-
+math.h
+-
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+string.h
+-
+sys/time.h
+-
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/features.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/main.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/neural_network.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/process.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/strides.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/training_data_new.c
+stdio.h
+-
+signal.h
+-
+math.h
+-
+unistd.h
+-
+string.h
+-
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+stdlib.h
+-
+sys/time.h
+-
+sys/stat.h
+-
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/training_file.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/turning_file.c
+unistd.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+sys/time.h
+-
+classifiers.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/classifiers.h
+constants.h
+/Users/amaaelantonini/Google Drive/Local/Spring_2017/EE 180DB/Working_System/constants.h
+
