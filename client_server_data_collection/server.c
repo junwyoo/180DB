@@ -106,11 +106,34 @@ void error(const char *msg)
 	exit(1);
 }
 
+void relay_skip_activity(char* buffer, int *client_socket_fd, int num_clients){
+
+	int j;
+	int write_results[num_clients];
+	memset(write_results, 0, sizeof(int)*num_clients);
+
+	memset(buffer, 0, 256);
+	sprintf(buffer, "n");
+
+	for (j = 0; j < num_clients; j++){
+		write_results[j] = write(client_socket_fd[j], buffer, strlen(buffer));
+			
+		if (write_results[j] <= 0){
+			printf("Error writing skip recording message to client socket %d. Attempting to resend.\n", client_socket_fd[j]);
+			while (write_results[j] <= 0){
+				write_results[j] = write(client_socket_fd[j], buffer, strlen(buffer));
+			}
+		}
+
+		printf("Successfuly wrote skip recording message to client %d with socket %d.\n", j, client_socket_fd[j]);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	// error check command line arguments
 	if (argc != 4) {
-		fprintf(stderr,"Usage: ./server <PORT_NUMBER> <NUM_CLIENTS>\n");
+		fprintf(stderr,"Usage: ./server <PORT_NUMBER> <NUM_CLIENTS> <USERNAME>\n");
 		exit(1);
 	}
 
@@ -123,6 +146,7 @@ int main(int argc, char *argv[])
 	int i = 0, j = 0;
 	int accepted_sockets = 0;	// We want this to be equal to NUM_CLIENTS
 	int completed_activities = 0;
+	char input;
 
 	int NUM_CLIENTS = atoi(argv[2]);
 	int client_socket_fd[NUM_CLIENTS];
@@ -139,6 +163,10 @@ int main(int argc, char *argv[])
   	memset(directory, 0, sizeof(char)*BUFF_SIZE);
   	sprintf(directory,"Train_Data_Set_%s",argv[3]);
 	mkdir(directory, 0777);
+
+	char *file_name = (char*) malloc(sizeof(char)*BUFF_SIZE);
+	char *cmd = (char*) malloc(sizeof(char)*BUFF_SIZE);
+  	memset(cmd, 0, sizeof(char)*BUFF_SIZE);
 
 	// setup socket
 	server_socket_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -188,6 +216,48 @@ int main(int argc, char *argv[])
 	printf("Successfully connected to all %d clients.\n", NUM_CLIENTS);
 
 	while (completed_activities != ACTIVITIES){
+
+		memset(file_name, 0, sizeof(char)*BUFF_SIZE);
+		sprintf(file_name, "Train_Data_Set_%s/%s_%s.csv", argv[3], activity_names[completed_activities], argv[3]);
+
+		printf("Train for %s? [y/n]\n", activity_names[completed_activities]);
+		
+		// Obtain user input to record (or not record) activity
+		input = getchar();
+
+		while (input != 'y' && input != 'n'){
+			printf("Input 'y' or 'n'.\n");
+			input = getchar();
+		}
+
+		// If user input n, skip current activity, and let clients know to skip activity
+		if (input == 'n'){
+			printf("Skipping training for %s.\n", activity_names[completed_activities]);
+			completed_activities++;
+			relay_skip_activity(buffer, client_socket_fd, NUM_CLIENTS);
+			continue;
+		}
+
+		if(access(file_name, F_OK) == -1){
+			printf("%s file not found, will be created in data gathering process.\n", file_name);
+		} else {
+			printf("File %s_%s already exists. Overwrite? [y/n]\n", activity_names[completed_activities], argv[3]);
+		
+			input = getchar();
+			while (input != 'y' && input != 'n'){
+				printf("Input 'y' or 'n'.\n");
+				input = getchar();
+			}
+
+			if (input == 'n'){
+				printf("Retaining existing version of %s_%s.\n", activity_names[completed_activities], argv[3]);
+				return 0;
+			} else {
+				sprintf(cmd, "rm ./%s", file_name);
+				system(cmd);
+			}
+		}
+
 		printf("Sending signal to begin recording %s...\n", activity_names[completed_activities]);
 
 		memset(buffer, 0, 256);
@@ -213,7 +283,8 @@ int main(int argc, char *argv[])
 
 		printf("Successfully sent record signal to all clients for %s.\nWaiting for response from all clients...\n", activity_names[completed_activities]);
 		
-		checkCSV(argv[3], activity_names[completed_activities], record_time[completed_activities]);
+		gather_data(file_name, HOLD_TIME, record_time[completed_activities]);
+		//checkCSV(argv[3], activity_names[completed_activities], record_time[completed_activities], 1);
 
 		for (j = 0; j < NUM_CLIENTS; j++){
 			

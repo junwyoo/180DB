@@ -7,6 +7,7 @@
 #include <netinet/in.h>
 #include <netdb.h> 
 #include "prompt_collect.h"
+#include <unistd.h>
 
 const char * activity_names[] = {
 /* 1 */		"walk_speed_1_50sec_32m",
@@ -109,6 +110,9 @@ int client(char* SERVER_IP_ADDRESS, int portno, char *username){
 	int read_result = 0;
 	int write_result = 0;
 
+	char *file_name = (char*) malloc(sizeof(char)*BUFF_SIZE);
+	char *cmd = (char*) malloc(sizeof(char)*BUFF_SIZE);
+
 	// setup the socket
 	client_socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	// check if the socket was created successfully. If it wasnt, display an error and exit
@@ -153,6 +157,9 @@ int client(char* SERVER_IP_ADDRESS, int portno, char *username){
 	while (completed_activities != ACTIVITIES){
 		printf("Waiting for signal to begin recording %s...\n", activity_names[completed_activities]);
 
+		memset(file_name, 0, sizeof(char)*BUFF_SIZE);
+		sprintf(file_name, "%s/%s_%s.csv", directory, activity_names[completed_activities], username);
+		
 		memset(buffer, 0, 256);
 
 		read_result = read(client_socket_fd, buffer, 255);
@@ -161,11 +168,18 @@ int client(char* SERVER_IP_ADDRESS, int portno, char *username){
 		if (read_result <= 0){
 			continue;
 		} else {
+			
+			if (strcmp(buffer, "n") == 0){
+				printf("Skipping training for %s.\n", activity_names[completed_activities]);
+				completed_activities++;
+				continue;
+			}
 
 			printf("Signal received. Beginning recording %s.\n", activity_names[completed_activities]);
 
 			// Record data
-			checkCSV(username, activity_names[completed_activities], record_time[completed_activities]);
+			gather_data(file_name, HOLD_TIME, record_time[completed_activities]);
+			//checkCSV(username, activity_names[completed_activities], record_time[completed_activities], 0);
 		}
 
 		memset(buffer, 0, 256);
