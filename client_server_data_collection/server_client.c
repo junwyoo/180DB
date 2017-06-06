@@ -69,9 +69,9 @@ int record_time[] = {
 };
 
 // Each of these directories will hold the corresponding csv files
-const char *server_training_directory = "./Server_Train_Data_Set";
+const char *server_training_directory = "./Server_Training_Data_Set";
 const char *server_testing_directory = "./Server_Testing_Data_Set";
-const char *client_training_directory = "./Client_Train_Data_Set";
+const char *client_training_directory = "./Client_Training_Data_Set";
 const char *client_testing_directory = "./Client_Testing_Data_Set";
 
 int setup_scp_without_auth_client(char* SERVER_IP_ADDRESS){

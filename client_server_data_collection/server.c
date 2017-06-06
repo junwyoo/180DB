@@ -238,26 +238,14 @@ int server_testing(int num_clients, char *username, int *client_socket_fd){
 		
 		memset(file_path, 0, sizeof(char)*BUFF_SIZE);
 		memset(file_name, 0, sizeof(char)*BUFF_SIZE);
-		sprintf(file_path, "%s_%s/server_test_%s_%d.csv", server_testing_directory, username, username, timestamp);
-		sprintf(file_name, "test_%s_%d.csv", username, timestamp);
+		sprintf(file_path, "%s_%s/%d.csv", server_testing_directory, username, timestamp);
+		sprintf(file_name, "%d.csv", username, timestamp);
 
 		printf("Sending signal to begin recording %s...\n", file_name);
 
 		memset(buffer, 0, 256);
 		sprintf(buffer, "%d", timestamp);
-
-		for (j = 0; j < num_clients; j++){
-			write_results[j] = write(client_socket_fd[j], buffer, strlen(buffer));
-			
-			if (write_results[j] <= 0){
-				printf("Error writing to client socket %d. Attempting to resend.\n", client_socket_fd[j]);
-				while (write_results[j] <= 0){
-					write_results[j] = write(client_socket_fd[j], buffer, strlen(buffer));
-				}
-			}
-
-			printf("Successfully wrote to client %d with socket %d.\n", j, client_socket_fd[j]);
-		}
+		server_send_write(buffer, client_socket_fd, num_clients);
 
 		printf("Successfully sent record signal to all clients for %s.\nWaiting for response from all clients...\n", file_name);
 		

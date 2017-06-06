@@ -157,7 +157,7 @@ int client_testing(int client_socket_fd, char *SERVER_IP_ADDRESS, char *username
 			continue;
 		} else {
 			
-			sprintf(file_path, "%s_%s/client_test_%s_%s.csv", client_testing_directory, username, username, buffer);
+			sprintf(file_path, "%s_%s/%s.csv", client_testing_directory, username, buffer);
 
 			printf("Signal received. Beginning recording %s.\n");
 
